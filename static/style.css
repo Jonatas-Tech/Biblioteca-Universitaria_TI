@@ -1,0 +1,237 @@
+/* ============================
+   ESTILO GLOBAL DA PÁGINA
+=============================== */
+body {
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", Arial, sans-serif;
+
+    background: linear-gradient(135deg, #e6ddff, #cbb2ff, #b3ffdd);
+    background-size: 200% 200%;
+    animation: gradientMove 12s ease infinite;
+
+    min-height: 100vh;
+    color: #3a2e4f;
+    position: relative;
+    overflow-x: hidden;
+}
+
+@keyframes gradientMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+/* DECORAÇÕES */
+body::before,
+body::after {
+    content: "";
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(35px);
+    opacity: 0.6;
+    z-index: -1;
+}
+
+/* Bola lilás */
+body::before {
+    top: -70px;
+    right: -60px;
+    width: 260px;
+    height: 260px;
+    background: #f3e9ff;
+}
+
+/* Bola verde */
+body::after {
+    bottom: -80px;
+    left: -50px;
+    width: 320px;
+    height: 320px;
+    background: rgba(144, 255, 208, 0.7);
+}
+
+/* HEADER */
+header {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+
+.titulo-box {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.titulo-box img {
+    width: 50px;
+    height: 50px;
+}
+
+.titulo-box h1 {
+    font-size: 36px;
+    margin: 0;
+    background: linear-gradient(90deg, #6c43e8, #24b459);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+    font-weight: 700;
+    letter-spacing: 1px;
+}
+
+/* TITULOS */
+h2 {
+    width: 90%;
+    max-width: 900px;
+    margin: 30px auto 10px;
+    color: #6b4fcf;
+    font-size: 23px;
+    border-left: 6px solid #9f7bff;
+    padding-left: 12px;
+    text-shadow: 0px 1px 8px rgba(140, 110, 255, 0.3);
+}
+
+/* ============================
+   CARDS DE LIVROS
+=============================== */
+.card {
+    background: rgba(255, 255, 255, 0.75);
+    width: 90%;
+    max-width: 900px;
+    margin: 15px auto;
+    padding: 30px;
+    border-radius: 20px;
+
+    border-left: 6px solid #b082ff;
+    box-shadow: 0px 6px 16px rgba(90, 55, 150, 0.16);
+
+    backdrop-filter: blur(8px);
+    transition: 0.25s ease;
+}
+
+.card:hover {
+    transform: translateY(-4px) scale(1.01);
+    box-shadow: 0px 10px 26px rgba(90, 55, 150, 0.25);
+    border-left-color: #8b66ff;
+}
+
+/* EXCLUIR */
+.excluir {
+    color: #e63b78;
+    font-weight: bold;
+    text-decoration: none;
+}
+.excluir:hover {
+    color: #b72258;
+    text-decoration: underline;
+}
+
+/* FORMULÁRIO */
+form {
+    width: 90%;
+    max-width: 900px;
+    margin: 35px auto;
+    padding: 50px;
+
+    background: rgba(255, 255, 255, 0.78);
+    border-radius: 20px;
+    border-left: 6px solid #7c4dff;
+
+    box-shadow: 0px 6px 20px rgba(90, 55, 150, 0.22);
+    backdrop-filter: blur(10px);
+}
+
+/* INPUTS */
+input[type="text"],
+input[type="number"] {
+    width: 100%;
+    padding: 14px;
+    border-radius: 12px;
+    border: 2px solid #d8c8ff;
+    margin: 10px 0;
+    font-size: 15px;
+    background: white;
+    transition: 0.25s;
+}
+
+input:focus {
+    border-color: #8e72ff;
+    box-shadow: 0 0 12px rgba(25, 235, 144, 0.597),
+                0 0 12px rgba(151, 110, 255, 0.711);
+    outline: none;
+}
+
+button {
+    width: 100%;
+    padding: 15px;
+    background: linear-gradient(135deg, #a675ff, #7d4dff, #4ade80);
+    background-size: 200% 200%;
+    animation: btnMove 5s ease infinite;
+
+    color: white;
+    border: none;
+    border-radius: 12px;
+    font-size: 18px;
+    margin-top: 12px;
+    cursor: pointer;
+    transition: 0.25s ease;
+}
+
+@keyframes btnMove {
+    0% { background-position: 0% 50%; }
+    50% { background-position: 100% 50%; }
+    100% { background-position: 0% 50%; }
+}
+
+button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 6px 20px rgba(146, 90, 255, 0.35),
+                0 6px 20px rgba(70, 230, 150, 0.35);
+}
+
+/* TEXTO "Nenhum livro" */
+p {
+    text-align: center;
+    color: #5f4b87;
+    font-size: 15px;
+}
+/* Esconde o form inicialmente */
+.edit-form {
+    display: none;
+    margin-top: 15px;
+    padding: 15px;
+    background: rgba(255,255,255,0.90);
+    border-radius: 12px;
+    border-left: 5px solid #6c43e8;
+}
+
+/* Botão EDITAR igual ao excluir, mas verde */
+.editar {
+    color: #24b459; /* verde suave */
+    font-weight: bold;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.editar:hover {
+    color: #1e8d47; /* verde mais escuro */
+    text-decoration: underline;
+}
+
+
+/* Botão Salvar dentro do form */
+.salvar-btn {
+    width: 100%;
+    padding: 12px;
+    background: #6c43e8;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    margin-top: 10px;
+    cursor: pointer;
+}
+
+.salvar-btn:hover {
+    background: #5536b8;
+}

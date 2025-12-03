@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Biblioteca Universitária</title>
+
+    <!-- IMPORTAR O CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+
+<body>
+
+<header>
+    <div class="titulo-box">
+        <img src="https://img.icons8.com/color/48/book.png" alt="book" />
+        <h1>Biblioteca Universitária</h1>
+    </div>
+</header>
+
+<div class="container">
+
+    <h2>Livros Cadastrados</h2>
+
+    {% if livros %}
+        {% for livro in livros %}
+       <div class="card">
+
+    <strong class="titulo-livro">{{ livro.titulo }}</strong><br>
+    Autor: {{ livro.autor }}<br>
+    Ano: {{ livro.ano_publicacao }}<br>
+    Disponível: {{ "Sim" if livro.disponivel else "Não" }}<br><br>
+
+    <!-- Botões -->
+   <a class="editar" href="javascript:void(0)" onclick="toggleForm({{ livro.id }})">Editar</a>
+&nbsp;|&nbsp;
+<a class="excluir" href="/delete/{{ livro.id }}">Excluir</a>
+
+
+    <!-- Formulário de edição escondido -->
+    <form id="form-{{ livro.id }}" class="edit-form" action="/edit/{{ livro.id }}" method="POST">
+
+        <input type="text" name="titulo" value="{{ livro.titulo }}" required>
+        <input type="text" name="autor" value="{{ livro.autor }}" required>
+        <input type="number" name="ano_publicacao" value="{{ livro.ano_publicacao }}" required>
+
+        <label>
+            <input type="checkbox" name="disponivel" 
+                {% if livro.disponivel %}checked{% endif %}> Disponível
+        </label>
+
+        <button type="submit" class="salvar-btn">Salvar</button>
+    </form>
+
+</div>
+
+
+        {% endfor %}
+    {% else %}
+        <p>Nenhum livro cadastrado ainda.</p>
+    {% endif %}
+
+    <hr />
+
+    <h2>Adicionar Novo Livro</h2>
+
+    <form class="formulario" action="/add" method="POST">
+        <input type="text" name="titulo" placeholder="Título" required />
+        <input type="text" name="autor" placeholder="Autor" required />
+        <input type="number" name="ano_publicacao" placeholder="Ano de Publicação" required />
+
+        <label>
+            <input type="checkbox" name="disponivel" />
+            Disponível
+        </label>
+
+        <button type="submit">Cadastrar Livro</button>
+    </form>
+
+</div>
+
+<footer>
+    <p>© 2025 — Sistema de Biblioteca • Flask + FastAPI</p>
+</footer>
+
+</body>
+<script>
+// Função para abrir/fechar o formulário de edição dentro do card
+function toggleForm(id) {
+
+    // Pega o formulário específico daquele livro
+    var form = document.getElementById("form-" + id);
+
+    /*  
+        Se o formulário estiver aparecendo ("block"), ele esconde.
+        Se estiver escondido ("none" ou vazio), ele mostra.
+        Isso cria o efeito de "abrir e fechar" ao clicar no botão Editar.
+    */
+    form.style.display = (form.style.display === "block") ? "none" : "block";
+}
+</script>
+
+
+</html>
