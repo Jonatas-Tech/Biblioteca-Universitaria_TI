@@ -95,8 +95,9 @@ response = requests.get(f"{API_URL}/livros")
 
 O Flask NÃO acessa o banco diretamente.
 Toda lógica é feita pela API.
+```
 
-🗃️ Banco de Dados SQLite
+# 🗃️ Banco de Dados SQLite
 
 O arquivo biblioteca.db é criado automaticamente no primeiro uso.
 Contém a tabela:
@@ -109,7 +110,7 @@ livros (
     disponivel INTEGER (0/1)
 )
 
-📝 Endpoints da API
+# 📝 Endpoints da API
 ✔ GET /livros
 
 Lista todos os livros.
@@ -130,7 +131,7 @@ Atualiza um livro existente.
 
 Exclui um livro do banco.
 
-🎨 Interface Web (Flask)
+# 🎨 Interface Web (Flask)
 
 A interface possui:
 
@@ -140,14 +141,14 @@ A interface possui:
 ✔ Formulário para cadastrar novos livros
 ✔ Estilização moderna com animação, gradiente e glassmorphism
 
-🖼️ Prints da Aplicação
+# 🖼️ Prints da Aplicação
 
 ![alt text](image.png)
 
 ![alt text](image-1.png)
 
-👨‍💻 Autor
+# 👨‍💻 Autores
 
-Jônatas Monteiro, Vitor Roberto, Maria Eduarda, Alan Alves
-Trabalho final — Disciplina de Back-End
-Professor: Flávio
+- Jônatas Monteiro, Vitor Roberto, Maria Eduarda, Alan Alves
+- Trabalho final — Disciplina de Back-End
+- Professor: Flávio
